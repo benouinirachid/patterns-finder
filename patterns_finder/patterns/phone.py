@@ -1,5 +1,7 @@
 from . import Pattern
 
+# Phone
+
 __generic = "(\\+\\d{1,3}\\s?)?((\\(\\d{3}\\)\\s?)|(\\d{3})(\\s|-?))(\\d{3}(\\s|-?))(\\d{4})(\\s?(([E|e]xt[:|.|]?)|x|X)(\\s?\\d+))?"
 __generic_label = "GENERIC"
 generic = Pattern(__generic, __generic_label)
