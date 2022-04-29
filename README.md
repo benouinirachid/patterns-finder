@@ -25,9 +25,9 @@ email, mail, web
 - Description
 
 - Sources
-
+["https://stackoverflow.com/posts/17773849/revisions", "https://stackoverflow.com/questions/3809401/what-is-a-good-regular-expression-to-match-a-url"]
 - Regex
-
+((ftp|https?):\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})
 - Matches
 
 - Non-Matches
@@ -60,15 +60,33 @@ match and detect mailto link.
 
 # Phone
 - Description
-
+Matches a phone number with at least 7 digits (not counting an extension) in any number of digit groups separated by spaces or dashes, and possibly enclosed in parentheses. The number may be prefixed by a "+".
 - Sources
-
+https://rgxdb.com/r/4KFA61EJ
 - Regex
-
+[+]?(?:\(\d+(?:\.\d+)?\)|\d+(?:\.\d+)?)(?:[ -]?(?:\(\d+(?:\.\d+)?\)|\d+(?:\.\d+)?))*(?:[ ]?(?:x|ext)\.?[ ]?\d{1,5})?
 - Matches
 
 - Non-Matches
 
+# Phone
+- Description
+Matches a phone number with at least 7 digits (not counting an extension) in any number of digit groups separated by spaces or dashes, and possibly enclosed in parentheses. The number may be prefixed by a "+".
+- Sources
+https://www.regextester.com/103299
+- Regex
+(\+\d{1,3}\s?)?((\(\d{3}\)\s?)|(\d{3})(\s|-?))(\d{3}(\s|-?))(\d{4})(\s?(([E|e]xt[:|.|]?)|x|X)(\s?\d+))?
+
+
+# Monetary
+- Description
+Detects monetary values and amounts.
+- Sources
+"https://stackoverflow.com/questions/14169820/regular-expression-to-match-all-currency-symbols"
+- Regex
+[\p{Sc}][\s]?[0-9.,]+[KMBTkmbt]?
+- "matches": ["$50m", "$50.2m", "$10,000,00", "$10000", "¥ 1M", "€50m"],
+- "non-matches": ["$", "¥", "10", "M" "10.00$"]
 
 # HTML
 - Description
@@ -81,7 +99,7 @@ match and detect mailto link.
 
 - Non-Matches
 
-# HTML a tags
+# HTML link
 - Description
 
 - Sources
@@ -116,23 +134,43 @@ https://stackoverflow.com/questions/41591777/regex-to-match-sql-keywords-in-c-sh
 - Non-Matches
 
 
-# ZIP / Postal Code
+# Postal Code
 
-- US
-\d{5}(-\d{4})?$)|(^[ABCEGHJKLMNPRSTVXY]{1}\d{1}[A-Z]{1} *\d{1}[A-Z]{1}\d{1}
-https://projects.lukehaas.me/regexhub/
+- USA
+
+Postal codes of the form 'DDDDD' or 'DDDDD-DDDD'. All digits are used, none carry any specific meaning.
+https://rgxdb.com/r/3KWQ51U1 , https://projects.lukehaas.me/regexhub/
+\d{5}(?:-\d{4})?
+
 
 - Canada
-\d{5}(-\d{4})?$)|(^[ABCEGHJKLMNPRSTVXY]{1}\d{1}[A-Z]{1} *\d{1}[A-Z]{1}\d{1}
-https://projects.lukehaas.me/regexhub/
+
+A 6 digit Canadian Postal Code.
+https://projects.lukehaas.me/regexhub/ , https://rgxdb.com/r/3MVR93T6
+(?:[ABCEGHJ-NPRSTVXY]\d[A-Z][ -]?\d[A-Z]\d)
+
 
 - France
+Postal codes of the form: 'DDDDD'. All digits are used. First two digits indicate the department, and range from 01 to 98.
+https://rgxdb.com/r/354H8M0X
+(?:0[1-9]|[1-8]\d|9[0-8])\d{3}
 
 - UK
-
+"regex": "[a-zA-Z]{1,2}[0-9][0-9A-Za-z]{0,1}[ -]{0,1}[0-9][A-Za-z]{2}",
+"label":"Postal-Code",
+"description": "UK Postcode regular expression that should prevent the majority of miskeying.",
+"sources": ["https://regexlib.com/REDetails.aspx?regexp_id=38"],
+"matches": ["W1A 1AA", "EC2V 1JN", "GIR 0AA"],
+"non-matches": ["TB12 1AB", "EC2V 1JM", "W2A 1AA"]
 - Spain
+(?:0[1-9]|[1-4]\d|5[0-2])\d{3}
 
 - Italy
+
+- Switzerland
+Four digits, first is district, second is area, third is route, fourth is post office number.
+https://rgxdb.com/r/3GYNWXVR
+[1-9]\d{3}
 
 - Brazilian
     
@@ -297,9 +335,10 @@ source: https://regexpattern.com/username/
 # Quoted String
 A regular expression that matches a quoted string, which is a string literal between quotation marks (“).
 
-/"((\\")|[^"(\\")])+"/
+([\\"“‘\'])(?:\\\\.|[^\\\\])*?([\\"”‘’\'])
 
 https://regexpattern.com/quoted-string/
+https://stackoverflow.com/questions/171480/regex-grabbing-values-between-quotation-marks
 
 Matches:
 “Regex”
@@ -316,7 +355,7 @@ Regex Pattern”
 - Float
 desc:
 source:
-regex: (\-|\+|±)?\d+\.?\d*
+regex: (\-|\+|±)?\d+\.\d*   --or-- [\-\+±]?\d+\.\d* 
 matches:
 1.10
 +10.10
@@ -327,12 +366,19 @@ non-matches:
 -.a
 b+
 
+- scientific
+Test Details Scientific Notation
+Expression	[+-]?\d(\.\d+)?[Ee][+-]?\d+
+Description	Matches a number using normalised scientific 'E' notation
+Matches	-1.23E99 | 1E0 | -9.999e-999
+Non-Matches	+10E0 | 2.3e5.4
+
 - Hexadecimal
 0[xX][0-9a-fA-F]+
 https://stackoverflow.com/questions/9221362/regular-expression-for-a-hexadecimal-number
 
 - Percent
-regex: "(?<=\s)([+-]?\d{1,4}([,.]\d{0,2})?%)",
+regex: "(?<=\s)([+-]?\d{1,4}([,.]\d{0,2})?%)" ([±+-]?\d{1,4}([,.]\d{0,2})? ?%),
 description: "Basically this matches into variables for percentages. It allows as much whitespace before the expression.",
 sources: ["https://www.regexlib.com/REDetails.aspx?regexp_id=831"],
 matches: ["+5.6%","1234.56%","-42.23%"],
@@ -409,6 +455,31 @@ Matches an American Express credit card number with hyphens or spaces.
 3000 0000-0000-0000	no match
 3000 0000 0000 0000	no match
 
+- "Year": {
+"regex": "(?<=\s)(19|20)\d{2}(?=\s)",
+"label":"Year",
+"description": "",
+"sources": [],
+"matches": ["2013", "1989", "2003"],
+"non-matches": ["232019", "2300", "20190", "22.2003"]
+},
+- "Date": {
+"regex":
+"(0?[1-9]|[12][0-9]|3[01])[-/.](0?[1-9]|1[012])[-/.](19|20)?\d\d",
+"label": "Date",
+"description": "Detect general data format",
+"sources": [],
+
+},
+- "Time": {
+"regex":
+"(?<=(\s))((([0]?[1-9]|1[0-2])(:|-|\.)[0-5][0-9]((:|-|\.)[0-5][0-9])?( )?(AM|am|aM|Am|PM|pm|pM|Pm))|(([0]?[0-9]|1[0-9]|2[0-3])(:|-|\.)[0-5][0-9]((:|-|\.)[0-5][0-9])?))",
+"label":"Time",
+"description": "Detect general data format.",
+"sources": [],
+"matches": ["1:01 AM", "1-01 am", "23:52:01", "03.24.36 AM"],
+"non-matches": ["19:31 AM", "9:9 PM", "25:60:61"]
+
 # Month
 
 # Day
@@ -425,6 +496,10 @@ Matches an American Express credit card number with hyphens or spaces.
 
 # Currency
 
+https://github.com/freeall/currency-codes/blob/master/data.js
+
+Codes and Names 
+
 # Vehicle Registration Numbers
 https://regexpattern.com/uk-vehicle-registration-numbers/
 
@@ -435,7 +510,7 @@ https://regexpattern.com/uk-vehicle-registration-numbers/
 # File Extension
 - Images
 ".+(\.(gif|png|jpg|jpeg|webp|svg|psd|bmp|tif)"
-
+[\w\-.][\w\-. ]*[\w\-]+.(gif|png|jpg|jpeg|webp|svg|psd|bmp|tif)
 - Documents 
 ".+(\.(gif|png|jpg|jpeg|webp|svg|psd|bmp|tif)"
 
@@ -444,3 +519,20 @@ https://regexpattern.com/uk-vehicle-registration-numbers/
 # mime type
 
 # data type
+
+# phone 
+
+- uk 
+(((\+44\s?\d{4}|\(?0\d{4}\)?)\s?\d{3}\s?\d{3})|((\+44\s?\d{3}|\(?0\d{3}\)?)\s?\d{3}\s?\d{4})|((\+44\s?\d{2}|\(?0\d{2}\)?)\s?\d{4}\s?\d{4}))(\s?\#(\d{4}|\d{3}))?
+https://stackoverflow.com/questions/11518035/regular-expression-for-gb-based-and-only-numeric-phone-number
+
+- us 
+(?:\+?\d{1}\s)?(\([0-9]{3}\) |[0-9]{3}-)[0-9]{3}-[0-9]{4}
+https://stackoverflow.com/questions/9776231/regular-expression-to-validate-us-phone-numbers
+
+
+# Arabic Number 
+
+[\u0660-\u0669]+
+for detecting : ٠١٢٣٤٥٦٧٨٩
+https://stackoverflow.com/questions/4134058/regular-expression-for-arabic-numbers
