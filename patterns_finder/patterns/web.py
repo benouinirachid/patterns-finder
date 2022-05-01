@@ -37,7 +37,7 @@ __alphanumeric = "([-A-Za-z0-9_]*?([-A-Za-z_][0-9]|[0-9][-A-Za-z_])[-A-Za-z0-9_]
 __alphanumeric_label = "ALPHANUMERIC"
 alphanumeric = Pattern(__alphanumeric, __alphanumeric_label)
 
-__emoji = "[\\U0001F601-\\U0001F64F]|[-\\U0001F680-\\U0001F6C0]|[\\uD800-\\uDBFF]|[\\u2702-\\u27B0]|[\\uF680-\\uF6C0]|[\\u24C2-\\uF251]"
+__emoji = "[\\U0001F40C-\\U0001F43C]|\\U0001F98A|[\\U0001F601-\\U0001F64F]|[-\\U0001F680-\\U0001F6C0]|[\\uD800-\\uDBFF]|[\\u2702-\\u27B0]|[\\uF680-\\uF6C0]|[\\u24C2-\\uF251]"
 __emoji_label = "EMOJI"
 emoji = Pattern(__emoji, __emoji_label)
 
