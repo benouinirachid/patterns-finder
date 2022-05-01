@@ -1,5 +1,39 @@
 
+```python
+{
+  "firstName": "John",
+  "lastName": "Smith",
+  "age": 25
+}
+```
+
+| | text | extraction |
+|---:|:---|:---|
+| 0 | the quick #A52A2A 🦊 jumped 3 times over the lazy 🐶 | [(18, 19, EMOJI, 🦊), (49, 50, EMOJI, 🐶)] |
+| 1 | quick.brown@fox.com is the email of 🦊 | [(0, 19, EMAIL, quick.brown@fox.com), (36, 37, EMOJI, 🦊)] |
+| 2 | The lazy 🐶 has a website https://lazy.dog.com | [(9, 10, EMOJI, 🐶), (25, 45, URL, https://lazy.dog.com)] |
+
+|    | text                                                 | extraction                                                         |
+|---:|:-----------------------------------------------------|:-------------------------------------------------------------------|
+|  0 | the quick #A52A2A 🦊 jumped 3 times over the lazy 🐶 | [(18, 19, 'EMOJI', '🦊'), (49, 50, 'EMOJI', '🐶')]                 |
+|  1 | quick.brown@fox.com is the email of 🦊               | [(0, 19, 'EMAIL', 'quick.brown@fox.com'), (36, 37, 'EMOJI', '🦊')] |
+|  2 | The lazy 🐶 has a website https://lazy.dog.com       | [(9, 10, 'EMOJI', '🐶'), (25, 45, 'URL', 'https://lazy.dog.com')]  |
+
+
+# Overview 
+
+Here, we list all the predefined patterns, which are organized in specific module. 
+To start use them you just need just to import the required module.
+
+```python
+from pattern_finder.patterns.web import url, email
+# or
+from pattern_finder.patterns.phone import generic, us, uk
+
+```
+
 # Web
+
 
 ## email
 Description:
