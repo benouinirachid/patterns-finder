@@ -1,6 +1,6 @@
-# pattern-finder library
+# pattern-finder
 
-Simple, Fast, Powerful and Easily extensible library for extracting patterns from text, with over than 60 predefined Regular Expressions.
+Simple, Fast, Powerful and Easily extensible python package for extracting patterns from text, with over than 60 predefined Regular Expressions.
 This library offers the capabilities:
 * A set of predefined patterns with the most useful regex.
 * Extend the patterns, by adding user defined regex.
