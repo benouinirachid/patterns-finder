@@ -248,46 +248,46 @@ The method `finder.patterns_in_df` have also the arguments `summary_type` and `s
 
 # List of all predefined patterns
 
-- web
+- Web
 ```python
 from patterns_finder.web import email, url, uri, mailto, html_link, sql, color_hex, copyright, alphanumeric, emoji, username, quotation, ipv4, ipv6
 ```
 
-- phone
+- Phone
 ```python
 from patterns_finder.phone import generic, uk, us
 ```
 
-- credit Cards
+- Credit Cards
 ```python
 from patterns_finder.credit_card import generic, visa, mastercard, discover, american_express
 ```
 
-- numbers
+- Numbers
 ```python
 from patterns_finder.number import integer, float, scientific, hexadecimal, percent, roman
 ```
 
-- currency
+- Currency
 ```python
 from patterns_finder.currency import monetary, symbol, code, name
 ```
 
-- languages
+- Languages
 ```python
 from patterns_finder.language import english, french, spanish, arabic, hebrew, turkish, russian, german, chinese, greek, japanese, hindi, bangali, armenian, swedish, portoguese, balinese, georgian
 ```
 
-- time and date
+- Time and Date
 ```python
 from patterns_finder.time_date import time, date, year
 ```
 
-- postal code
+- Postal Code
 ```python
 from patterns_finder.postal_code import us, canada, uk, france, spain, switzerland, brazilian
 ```
 
 # Contact
 
-Please email your questions or comments to [me](benouini.rachid@gmail.com).
+Please email your questions or comments to [me](mailto:benouini.rachid@gmail.com).
