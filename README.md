@@ -1,4 +1,4 @@
-# pattern-finder
+# patterns-finder
 
 Simple, Fast, Powerful and Easily extensible python package for extracting patterns from text, with over than 60 predefined Regular Expressions.
 
@@ -43,7 +43,7 @@ email.find("quick.brown@fox.com is the email of 🦊 ")
 
 ```
 
-The results provided the method find for each pattern are in the form:
+The results provided by the method `find` for each of pattern are in the form:
     
     [(0, 19, 'EMAIL', 'quick.brown@fox.com')]
       ^  ^       ^          ^ 

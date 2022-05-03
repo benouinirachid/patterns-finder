@@ -4,6 +4,7 @@ import regex
 
 class Pattern():
     """Pattern class that associate a label with regex."""
+
     def __init__(self, pattern, label, flags=regex.V0):
         # Compile the regex and init the label
         self.pattern = regex.compile(pattern, flags)

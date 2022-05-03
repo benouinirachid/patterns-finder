@@ -5,8 +5,6 @@ Helper functions to construct raw regular expressions strings
 from __future__ import annotations
 from datetime import date
 from . import version
-from . import finder
-from . import patterns
 
 __author__ = "Rachid Benouini"
 __author_email__ = "rachid.benouini@gmail.com"
