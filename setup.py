@@ -5,16 +5,21 @@ from setuptools import find_packages
 here = pathlib.Path(__file__).parent.resolve()
 
 long_description = (here / "README.md").read_text(encoding="utf-8")
-description = "A patterns finder by regex."
+license = (here / "LICENSE").read_text(encoding="utf-8")
+description = """Simple, Fast, Powerful and Easily extensible python package
+ for extracting patterns from text, with over than 60 predefined Regular
+ Expressions."""
+keywords = [
+    "patterns extraction", "Regex", "visualization annotations",
+    "regular-expression", "information-extraction"
+]
 install_requires = ["regex"]
 setup_requires = []
 tests_require = []
-
-
 setup(
-    name="Patterns Finder",
-    version="0.0.1",
-    python_requires=">=3.6",
+    name="patterns-finder",
+    version="1.0.0",
+    python_requires=">=3.8",
     classifiers=[
         "Development Status :: 5 - Production/Stable",
         "Intended Audience :: Developers",
@@ -26,9 +31,9 @@ setup(
     long_description=long_description,
     url="https://github.com/benouinirachid/patterns-finder",
     author="Rachid Benouini",
-    keywords="regex",
+    keywords=keywords,
     author_email="benouini.rachid@gmail.com",
-    license="Apache License 2.0",
+    license=license,
     install_requires=install_requires,
     setup_requires=setup_requires,
     test_suite="tests",
