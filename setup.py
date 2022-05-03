@@ -4,11 +4,12 @@ from setuptools import find_packages
 
 here = pathlib.Path(__file__).parent.resolve()
 
-long_description = (here / "README.md").read_text(encoding="utf-8")
+# long_description = (here / "README.md").read_text(encoding="utf-8")
 license = (here / "LICENSE").read_text(encoding="utf-8")
 description = """Simple, Fast, Powerful and Easily extensible python package
  for extracting patterns from text, with over than 60 predefined Regular
  Expressions."""
+long_description = description
 keywords = [
     "patterns extraction", "Regex", "visualization annotations",
     "regular-expression", "information-extraction"
