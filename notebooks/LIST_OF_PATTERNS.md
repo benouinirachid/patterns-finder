@@ -680,7 +680,7 @@ Description:
 
 Regex:
 
-    [\\u0621-\\u064A\\u0660-\\u0669]+
+    [\\u0621-\\u064A\\u0660-\\u0669]+ 
 Label: **RUSSIAN**
 
 Matches:
