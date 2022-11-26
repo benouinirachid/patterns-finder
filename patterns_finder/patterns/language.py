@@ -26,7 +26,7 @@ __turkish = "[a-zA-ZğüşöçİĞÜŞÖÇ]+"
 __turkish_label = "TURKISH"
 turkish = Pattern(__turkish, __turkish_label)
 
-__russian = "[\\u0621-\\u064A\\u0660-\\u0669]+"
+__russian = "[\\u0401\\u0451\\u0410-\\u044f]+"
 __russian_label = "RUSSIAN"
 russian = Pattern(__russian, __russian_label)
 
